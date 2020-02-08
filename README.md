@@ -3,19 +3,29 @@
 This [StackOverflow answer by qianlei](https://stackoverflow.com/a/45234513/4812090) where Razvan Alex
 assked the question [Proper way of using WebSockets with React Native](https://stackoverflow.com/questions/44088058/proper-way-of-using-websockets-with-react-native).
 
-## Created
+## Clone repo
+Example
 ```
-(rn-py38) wink@wink-desktop:~/prgs/react-native (master)
-$ npx react-native init Wss1 --template react-native-template-typescript
+(rn-py38) wink@wink-desktop:~/prgs/react-native
+$ git clone https://github.com/winksaville/react-native-wss1 Wss1 && cd Wss1
+...
+(rn-py38) wink@wink-desktop:~/prgs/react-native/Wss1
+$
 ```
 
-Then replaced the default `App.tsx` with the contents from [answer by qianlei](https://stackoverflow.com/a/45234513/4812090).
+## Install node_modules
+This must be done one time prior to first attempt to [build and run](build-and-run)
+```
+(rn-py38) wink@wink-desktop:~/prgs/react-native/Wss1
+$ yarn install
+```
 
 ## Build and Run
+
 In one terminal start the js-server
 ```
 (rn-py38) wink@wink-desktop:~/prgs/react-native/Wss1
-$ npx react-native start
+$ yarn start
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │                                                                              │
 │  Running Metro Bundler on port 8081.                                         │
@@ -36,7 +46,7 @@ Loading dependency graph, done.
 In anther terminal run-android
 ```
 (rn-py38) wink@wink-desktop:~/prgs/react-native/Wss1
-$ npx react-native run-android
+$ yarn android
 info Running jetifier to migrate libraries to AndroidX. You can disable it using "--no-jetifier" flag.
 Jetifier found 864 file(s) to forward-jetify. Using 12 workers...
 info JS server already running.
@@ -90,3 +100,19 @@ If you press "TURN ON" button a "LOG It worked!" appears in the js-server termin
  LOG  It worked!
 ```
 <img src="assets/emulator.1.green.png" width="300">
+
+## Dist clean
+Remove node_modules and build artifacts
+```
+(rn-py38) wink@wink-desktop:~/prgs/react-native/Wss1
+$ yarn distclean
+```
+
+## How this was originally created
+```
+(rn-py38) wink@wink-desktop:~/prgs/react-native (master)
+$ npx react-native init Wss1 --template react-native-template-typescript
+```
+
+Then replaced the default `App.tsx` with the contents from [answer by qianlei](https://stackoverflow.com/a/45234513/4812090).
+

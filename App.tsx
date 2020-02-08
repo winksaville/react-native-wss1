@@ -8,30 +8,37 @@ import {StyleSheet, Text, View, Button} from 'react-native';
 export class App extends React.Component {
   constructor() {
     super();
+    console.log('constructor:+');
 
     this.state = {
       open: false,
     };
     this.socket = new WebSocket('wss://echo.websocket.org/');
     this.emit = this.emit.bind(this);
+    console.log('constructor:-');
   }
 
   emit() {
+    console.log('emit:+');
     this.setState(prevState => ({
       open: !prevState.open,
     }));
     this.socket.send('It worked!');
+    console.log('emit:-');
   }
 
   componentDidMount() {
+    console.log('componentDidMount:+');
     this.socket.onopen = () =>
       this.socket.send(
         JSON.stringify({type: 'greet', payload: 'Hello Mr. Server!'}),
       );
     this.socket.onmessage = ({data}) => console.log(data);
+    console.log('componentDidMount:-');
   }
 
   render() {
+    console.log('render:+');
     const LED = {
       backgroundColor: this.state.open ? 'lightgreen' : 'red',
       height: 30,
@@ -45,7 +52,7 @@ export class App extends React.Component {
       justifyContent: 'space-between',
     };
 
-    return (
+    let obj = (
       <View style={styles.container}>
         <Button
           onPress={this.emit}
@@ -56,6 +63,9 @@ export class App extends React.Component {
         <View style={LED}></View>
       </View>
     );
+
+    console.log('render:-');
+    return obj;
   }
 }
 

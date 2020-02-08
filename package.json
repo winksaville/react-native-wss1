@@ -7,7 +7,14 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "prepare": "yarn run compile",
+    "pretest": "yarn run compile",
+    "posttest": "yarn run check"
   },
   "dependencies": {
     "react": "16.9.0",
@@ -27,7 +34,9 @@
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
     "react-test-renderer": "16.9.0",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.3",
+    "gts": "^1.1.2",
+    "@types/node": "^10.0.3"
   },
   "jest": {
     "preset": "react-native",
